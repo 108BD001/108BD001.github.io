@@ -9,46 +9,47 @@ body {
     margin:0;
     font-family: Arial;
     background:#0b0f1a;
-    color:#fff;
+    color:white;
     text-align:center;
 }
 
-.header {
-    background:url('qsl.jpg') center/contain no-repeat;
-    background-color:black;
-    height:500px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    box-shadow: inset 0 0 200px rgba(0,0,0,0.8);
+/* QSL IMAGE */
+.qsl-image {
+    width:100%;
+    max-height:500px;
+    object-fit:contain;
+    background:black;
 }
 
+/* CALLSIGN */
 h1 {
-    font-size:70px;
-    margin:0;
+    font-size:60px;
+    margin-top:20px;
     color:#00c3ff;
-    text-shadow:0 0 20px #00c3ff;
+    text-shadow:0 0 15px #00c3ff;
 }
 
 .subtitle {
-    font-size:22px;
-    margin-top:10px;
+    font-size:20px;
 }
 
+/* BUTTON */
 .button {
-    margin-top:30px;
-    padding:18px 40px;
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 35px;
     background:linear-gradient(45deg,#ff0000,#ff5e5e);
-    color:#fff;
+    color:white;
     text-decoration:none;
     font-weight:bold;
     border-radius:6px;
-    box-shadow:0 0 20px red;
+    box-shadow:0 0 15px red;
 }
 
+/* SECTION */
 .section {
-    padding:40px 20px;
+    margin-top:40px;
+    padding:20px;
     border-top:1px solid #222;
 }
 
@@ -56,6 +57,7 @@ h2 {
     color:#00c3ff;
 }
 
+/* TABLE */
 table {
     margin:auto;
     border-collapse:collapse;
@@ -63,8 +65,8 @@ table {
 }
 
 td, th {
-    border-bottom:1px solid #333;
     padding:12px;
+    border-bottom:1px solid #333;
 }
 
 </style>
@@ -72,17 +74,25 @@ td, th {
 
 <body>
 
-<div class="header">
-    <h1>108BD001</h1>
-    <div class="subtitle">OP. Zibi | Scotland</div>
-    <a class="button" href="qsl.jpg" download>DOWNLOAD QSL CARD</a>
-</div>
+<!-- QSL IMAGE -->
+<img src="qsl.jpg" class="qsl-image">
 
+<!-- TITLE -->
+<h1>108BD001</h1>
+<div class="subtitle">OP. Zibi | Scotland</div>
+
+<!-- BUTTON -->
+<a href="qsl.jpg" download class="button">
+DOWNLOAD QSL CARD
+</a>
+
+<!-- ABOUT -->
 <div class="section">
     <h2>About</h2>
     <p>CB Radio operator from Scotland. Active on 27.555 USB.</p>
 </div>
 
+<!-- QSO LOG -->
 <div class="section">
     <h2>QSO Log</h2>
     <table>

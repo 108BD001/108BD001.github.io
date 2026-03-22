@@ -14,13 +14,12 @@ body {
 }
 
 .header {
-    background:url('qsl.jpg') center/cover no-repeat;
-    height:500px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    box-shadow: inset 0 0 200px rgba(0,0,0,0.8);
+   <div class="header">
+    <img src="qsl.jpg" style="width:100%; max-height:500px; object-fit:contain;">
+    <h1>108BD001</h1>
+    <div class="subtitle">OP. Zibi | Scotland</div>
+    <a class="button" href="qsl.jpg" download>DOWNLOAD QSL CARD</a>
+</div>
 }
 
 h1 {

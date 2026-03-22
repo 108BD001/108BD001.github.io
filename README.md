@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,47 +8,67 @@
 body {
     margin:0;
     font-family: Arial;
-    background:#0b0f1a;
     color:white;
     text-align:center;
+    background:black;
 }
 
-/* QSL IMAGE */
-.qsl-image {
+/* FULL SCREEN BACKGROUND */
+.header {
+    position:relative;
     width:100%;
-    max-height:auto;
-    display:block;
+    height:100vh;
+    background:url('qsl.jpg') center/contain no-repeat;
+    background-color:black;
+}
+
+/* CIEMNE PRZYCIEMNIENIE */
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+/* TEKST NA ŚRODKU */
+.content {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
 }
 
 /* CALLSIGN */
 h1 {
-    font-size:60px;
-    margin-top:20px;
+    font-size:70px;
+    margin:0;
     color:#00c3ff;
-    text-shadow:0 0 15px #00c3ff;
+    text-shadow:0 0 20px #00c3ff;
 }
 
 .subtitle {
-    font-size:20px;
+    font-size:22px;
+    margin-top:10px;
 }
 
-/* BUTTON */
+/* PRZYCISK */
 .button {
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 35px;
+    margin-top:30px;
+    padding:18px 40px;
     background:linear-gradient(45deg,#ff0000,#ff5e5e);
     color:white;
     text-decoration:none;
     font-weight:bold;
     border-radius:6px;
-    box-shadow:0 0 15px red;
+    box-shadow:0 0 20px red;
+    display:inline-block;
 }
 
-/* SECTION */
+/* SEKCJE */
 .section {
-    margin-top:40px;
-    padding:20px;
+    padding:40px 20px;
     border-top:1px solid #222;
 }
 
@@ -56,7 +76,7 @@ h2 {
     color:#00c3ff;
 }
 
-/* TABLE */
+/* TABELA */
 table {
     margin:auto;
     border-collapse:collapse;
@@ -73,17 +93,21 @@ td, th {
 
 <body>
 
-<!-- QSL IMAGE -->
-<img src="qsl.jpg" class="qsl-image">
+<!-- HEADER -->
+<div class="header">
 
-<!-- TITLE -->
-<h1>108BD001</h1>
-<div class="subtitle">OP. Zibi | Scotland</div>
+    <div class="overlay"></div>
 
-<!-- BUTTON -->
-<a href="qsl.jpg" download class="button">
-DOWNLOAD QSL CARD
-</a>
+    <div class="content">
+        <h1>108BD001</h1>
+        <div class="subtitle">OP. Zibi | Scotland</div>
+
+        <a href="qsl.jpg" download class="button">
+            DOWNLOAD QSL CARD
+        </a>
+    </div>
+
+</div>
 
 <!-- ABOUT -->
 <div class="section">
@@ -91,7 +115,7 @@ DOWNLOAD QSL CARD
     <p>CB Radio operator from Scotland. Active on 27.555 USB.</p>
 </div>
 
-<!-- QSO LOG -->
+<!-- QSO -->
 <div class="section">
     <h2>QSO Log</h2>
     <table>

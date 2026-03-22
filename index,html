@@ -1,46 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>108BD001</title>
+<title>108BD001 QSL</title>
 
 <style>
 body {
     margin:0;
     font-family:Arial;
-    background:black;
+    background:#0b0f1a;
     color:white;
     text-align:center;
 }
 
-img {
+/* KONTAINER */
+.container {
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+}
+
+/* OBRAZ */
+.qsl {
     width:100%;
-    max-height:90vh;
-    object-fit:contain;
+    height:auto;
     display:block;
-    background:black;
 }
 
-h1 {
-    color:#00c3ff;
-    font-size:50px;
+/* PANEL DANYCH */
+.info-box {
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:rgba(0,0,0,0.75);
+    padding:20px;
+    border-radius:10px;
+    width:260px;
+    text-align:left;
+    font-size:14px;
+    box-shadow:0 0 15px rgba(0,0,0,0.8);
 }
 
+/* PRZYCISK */
 .button {
     display:inline-block;
     margin:20px;
     padding:15px 30px;
-    background:red;
+    background:linear-gradient(45deg,#ff0000,#ff5e5e);
     color:white;
     text-decoration:none;
     font-weight:bold;
+    border-radius:6px;
+    box-shadow:0 0 15px red;
+}
+
+/* LOG */
+.log {
+    margin-top:40px;
+}
+
+table {
+    margin:auto;
+    border-collapse:collapse;
+    width:90%;
+}
+
+td, th {
+    padding:10px;
+    border-bottom:1px solid #333;
+}
+
+h1 {
+    color:#00c3ff;
 }
 </style>
 </head>
 
 <body>
 
-<img src="qsl.jpg">
+<div class="container">
+
+    <!-- QSL -->
+    <img src="qsl.jpg" class="qsl">
+
+    <!-- INFO BOX -->
+    <div class="info-box" id="info">
+        Loading...
+    </div>
+
+</div>
 
 <h1>108BD001</h1>
 <p>OP. Zibi | Scotland</p>
@@ -49,5 +97,51 @@ h1 {
 DOWNLOAD QSL CARD
 </a>
 
+<!-- LOG -->
+<div class="log">
+<h2>QSO Log</h2>
+
+<table>
+<tr>
+<th>Date</th>
+<th>Station</th>
+<th>Mode</th>
+<th>QSL</th>
+</tr>
+
+<tr>
+<td>22/03/2026</td>
+<td>John UK</td>
+<td>USB</td>
+<td><a href="?to=John&date=22-03-2026&time=14:15&mode=USB&rst=5/9&freq=27.555">Open</a></td>
+</tr>
+
+</table>
+</div>
+
+<!-- SCRIPT -->
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const data = {
+    to: params.get('to') || '---',
+    date: params.get('date') || '---',
+    time: params.get('time') || '---',
+    mode: params.get('mode') || '---',
+    rst: params.get('rst') || '---',
+    freq: params.get('freq') || '---'
+};
+
+document.getElementById("info").innerHTML = `
+<b>FROM:</b> 108BD001<br>
+<b>TO:</b> ${data.to}<br>
+<b>DATE:</b> ${data.date}<br>
+<b>TIME:</b> ${data.time}<br>
+<b>MODE:</b> ${data.mode}<br>
+<b>RST:</b> ${data.rst}<br>
+<b>FREQ:</b> ${data.freq}
+`;
+</script>
+
 </body>
-</html> 
+</html>

@@ -16,9 +16,8 @@ body {
 /* QSL IMAGE */
 .qsl-image {
     width:100%;
-    max-height:500px;
-    object-fit:contain;
-    background:black;
+    max-height:auto;
+    display:block;
 }
 
 /* CALLSIGN */

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,137 +10,136 @@ body {
     font-family:Arial;
     background:#0b0f1a;
     color:white;
-    text-align:center;
 }
 
-/* KONTAINER */
-.container {
-    max-width:1200px;
-    margin:auto;
-    position:relative;
-}
-
-/* OBRAZ */
-.qsl {
-    width:100%;
-    height:auto;
-    display:block;
-}
-
-/* PANEL DANYCH */
-.info-box {
-    position:absolute;
-    top:20px;
-    right:20px;
-    background:rgba(0,0,0,0.75);
+/* UKŁAD GŁÓWNY */
+.wrapper {
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:20px;
     padding:20px;
+    flex-wrap:wrap;
+}
+
+/* QSL OBRAZ */
+.qsl {
+    max-width:800px;
+    width:100%;
     border-radius:10px;
+}
+
+/* PANEL PRAWO */
+.panel {
+    background:#e6e6e6;
+    color:black;
+    padding:15px;
     width:260px;
-    text-align:left;
+    border-radius:10px;
     font-size:14px;
-    box-shadow:0 0 15px rgba(0,0,0,0.8);
+}
+
+/* BOX */
+.box {
+    background:#f5f5f5;
+    border:1px solid #ccc;
+    padding:8px;
+    margin-bottom:8px;
+    border-radius:5px;
+}
+
+/* GRID */
+.row {
+    display:flex;
+    gap:5px;
+}
+
+.small {
+    flex:1;
 }
 
 /* PRZYCISK */
 .button {
-    display:inline-block;
-    margin:20px;
-    padding:15px 30px;
-    background:linear-gradient(45deg,#ff0000,#ff5e5e);
+    display:block;
+    text-align:center;
+    margin:20px auto;
+    padding:15px;
+    background:red;
     color:white;
     text-decoration:none;
     font-weight:bold;
-    border-radius:6px;
-    box-shadow:0 0 15px red;
+    width:250px;
+    border-radius:5px;
 }
 
-/* LOG */
-.log {
-    margin-top:40px;
-}
-
-table {
-    margin:auto;
-    border-collapse:collapse;
-    width:90%;
-}
-
-td, th {
-    padding:10px;
-    border-bottom:1px solid #333;
-}
-
-h1 {
-    color:#00c3ff;
+/* MOBILE */
+@media(max-width:900px){
+    .wrapper {
+        flex-direction:column;
+        align-items:center;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
     <!-- QSL -->
     <img src="qsl.jpg" class="qsl">
 
-    <!-- INFO BOX -->
-    <div class="info-box" id="info">
-        Loading...
+    <!-- PANEL -->
+    <div class="panel" id="panel">
+
+        <div class="box"><b>FROM:</b><br>108BD001<br>Zibi</div>
+
+        <div class="box"><b>TO:</b><br id="to">---</div>
+
+        <div class="row">
+            <div class="box small">
+                <b>DATE</b><br id="date">---
+            </div>
+            <div class="box small">
+                <b>TIME</b><br id="time">---
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box small">
+                <b>MODE</b><br id="mode">---
+            </div>
+            <div class="box small">
+                <b>RST</b><br id="rst">---
+            </div>
+            <div class="box small">
+                <b>FREQ</b><br id="freq">---
+            </div>
+        </div>
+
+        <div class="box">
+            <b>REMARKS:</b><br>
+            Best regards Zibi
+        </div>
+
     </div>
 
 </div>
-
-<h1>108BD001</h1>
-<p>OP. Zibi | Scotland</p>
 
 <a href="qsl.jpg" download class="button">
 DOWNLOAD QSL CARD
 </a>
 
-<!-- LOG -->
-<div class="log">
-<h2>QSO Log</h2>
-
-<table>
-<tr>
-<th>Date</th>
-<th>Station</th>
-<th>Mode</th>
-<th>QSL</th>
-</tr>
-
-<tr>
-<td>22/03/2026</td>
-<td>John UK</td>
-<td>USB</td>
-<td><a href="?to=John&date=22-03-2026&time=14:15&mode=USB&rst=5/9&freq=27.555">Open</a></td>
-</tr>
-
-</table>
-</div>
-
 <!-- SCRIPT -->
 <script>
 const params = new URLSearchParams(window.location.search);
 
-const data = {
-    to: params.get('to') || '---',
-    date: params.get('date') || '---',
-    time: params.get('time') || '---',
-    mode: params.get('mode') || '---',
-    rst: params.get('rst') || '---',
-    freq: params.get('freq') || '---'
-};
-
-document.getElementById("info").innerHTML = `
-<b>FROM:</b> 108BD001<br>
-<b>TO:</b> ${data.to}<br>
-<b>DATE:</b> ${data.date}<br>
-<b>TIME:</b> ${data.time}<br>
-<b>MODE:</b> ${data.mode}<br>
-<b>RST:</b> ${data.rst}<br>
-<b>FREQ:</b> ${data.freq}
-`;
+document.getElementById("to").innerText = params.get("to") || "---";
+document.getElementById("date").innerText = params.get("date") || "---";
+document.getElementById("time").innerText = params.get("time") || "---";
+document.getElementById("mode").innerText = params.get("mode") || "---";
+document.getElementById("rst").innerText = params.get("rst") || "---";
+document.getElementById("freq").innerText = params.get("freq") || "---";
 </script>
 
 </body>

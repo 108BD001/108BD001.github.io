@@ -1,147 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>108BD001 QSL</title>
+<title>108BD001</title>
 
 <style>
 body {
     margin:0;
     font-family:Arial;
-    background:#0b0f1a;
+    background:black;
     color:white;
-}
-
-/* UKŁAD GŁÓWNY */
-.wrapper {
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    gap:20px;
-    padding:20px;
-    flex-wrap:wrap;
-}
-
-/* QSL OBRAZ */
-.qsl {
-    max-width:800px;
-    width:100%;
-    border-radius:10px;
-}
-
-/* PANEL PRAWO */
-.panel {
-    background:#e6e6e6;
-    color:black;
-    padding:15px;
-    width:260px;
-    border-radius:10px;
-    font-size:14px;
-}
-
-/* BOX */
-.box {
-    background:#f5f5f5;
-    border:1px solid #ccc;
-    padding:8px;
-    margin-bottom:8px;
-    border-radius:5px;
-}
-
-/* GRID */
-.row {
-    display:flex;
-    gap:5px;
-}
-
-.small {
-    flex:1;
-}
-
-/* PRZYCISK */
-.button {
-    display:block;
     text-align:center;
-    margin:20px auto;
-    padding:15px;
+}
+
+/* OBRAZ */
+img {
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* TEKST */
+h1 {
+    color:#00c3ff;
+    font-size:50px;
+}
+
+.button {
+    display:inline-block;
+    margin:20px;
+    padding:15px 30px;
     background:red;
     color:white;
     text-decoration:none;
     font-weight:bold;
-    width:250px;
-    border-radius:5px;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-    .wrapper {
-        flex-direction:column;
-        align-items:center;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<img src="qsl.jpg">
 
-    <!-- QSL -->
-    <img src="qsl.jpg" class="qsl">
-
-    <!-- PANEL -->
-    <div class="panel" id="panel">
-
-        <div class="box"><b>FROM:</b><br>108BD001<br>Zibi</div>
-
-        <div class="box"><b>TO:</b><br id="to">---</div>
-
-        <div class="row">
-            <div class="box small">
-                <b>DATE</b><br id="date">---
-            </div>
-            <div class="box small">
-                <b>TIME</b><br id="time">---
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="box small">
-                <b>MODE</b><br id="mode">---
-            </div>
-            <div class="box small">
-                <b>RST</b><br id="rst">---
-            </div>
-            <div class="box small">
-                <b>FREQ</b><br id="freq">---
-            </div>
-        </div>
-
-        <div class="box">
-            <b>REMARKS:</b><br>
-            Best regards Zibi
-        </div>
-
-    </div>
-
-</div>
+<h1>108BD001</h1>
+<p>OP. Zibi | Scotland</p>
 
 <a href="qsl.jpg" download class="button">
 DOWNLOAD QSL CARD
 </a>
 
-<!-- SCRIPT -->
-<script>
-const params = new URLSearchParams(window.location.search);
-
-document.getElementById("to").innerText = params.get("to") || "---";
-document.getElementById("date").innerText = params.get("date") || "---";
-document.getElementById("time").innerText = params.get("time") || "---";
-document.getElementById("mode").innerText = params.get("mode") || "---";
-document.getElementById("rst").innerText = params.get("rst") || "---";
-document.getElementById("freq").innerText = params.get("freq") || "---";
-</script>
-
 </body>
 </html>
-<!-- rebuild -->
